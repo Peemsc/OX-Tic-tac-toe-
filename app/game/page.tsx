@@ -51,66 +51,111 @@ export default function GamePage() {
   }, [gameState.currentPlayer, gameState.isGameOver, botMove]);
 
   return (
-    <div className="min-h-screen p-8">
+    <div className="min-h-screen p-4 sm:p-8 bg-gradient-to-b from-slate-900 to-slate-800">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-start mb-8">
-          <div className="w-1/3 text-black">
-            <Card className="p-4">
-              <h2 className="text-xl  font-bold mb-4">Statistics</h2>
-              <div className="space-y-2">
-                <div>Total Games: {stats.totalGames}</div>
-                <div>Wins: {stats.wins}</div>
-                <div>Losses: {stats.losses}</div>
-                <div>Draws: {stats.draws}</div>
-                <div>Best Streak: {stats.bestStreak}</div>
-                <div>Highest Score: {stats.highestScore}</div>
+        <div className="flex flex-col lg:flex-row justify-between items-start gap-8">
+          {/* Stats Card */}
+          <div className="w-full lg:w-1/3">
+            <Card className="p-6 bg-white/10 backdrop-blur-sm border-none shadow-xl">
+              <h2 className="text-xl font-bold mb-4 text-white">Statistics</h2>
+              <div className="space-y-3">
+                <div className="flex justify-between text-white/90">
+                  <span>Total Games</span>
+                  <span className="font-mono">{stats.totalGames}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/90">Wins</span>
+                  <span className="font-mono text-green-400">{stats.wins}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/90">Losses</span>
+                  <span className="font-mono text-red-400">{stats.losses}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/90">Draws</span>
+                  <span className="font-mono text-yellow-400">
+                    {stats.draws}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/90">Best Streak</span>
+                  <span className="font-mono text-blue-400">
+                    {stats.bestStreak}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-white/90">Highest Score</span>
+                  <span className="font-mono text-purple-400">
+                    {stats.highestScore}
+                  </span>
+                </div>
               </div>
             </Card>
           </div>
 
-          <div className="w-2/3 pl-8">
-            <div className="text-center mb-4">
-              <h1 className="text-4xl font-bold mb-4">Tic Tac Toe</h1>
+          {/* Game Section */}
+          <div className="w-full lg:w-2/3 space-y-6">
+            <div className="text-center">
+              <h1 className="text-4xl font-bold mb-6 text-white">
+                Tic Tac Toe
+              </h1>
 
-              <Select
-                className="w-48 mx-auto mb-4 text-black text-center"
-                value={gameState.difficulty}
-                onChange={handleDifficultyChange}
-                options={difficultyOptions}
-                label="Difficulty"
-              />
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+                <Select
+                  className="w-48 mx-auto mb-4"
+                  value={gameState.difficulty}
+                  onChange={handleDifficultyChange}
+                  options={difficultyOptions}
+                  label="Difficulty"
+                />
 
-              <Score
-                score={gameState.score}
-                consecutiveWins={gameState.consecutiveWins}
+                <Score
+                  score={gameState.score}
+                  consecutiveWins={gameState.consecutiveWins}
+                />
+              </div>
+            </div>
+
+            <div className="flex justify-center">
+              <Board
+                player={gameState.currentPlayer}
+                board={gameState.board}
+                winningLine={gameState.winningLine}
+                onSquareClick={handleSquareClick}
+                disabled={
+                  gameState.currentPlayer === "O" || gameState.isGameOver
+                }
               />
             </div>
 
-            <Board
-              player={gameState.currentPlayer}
-              board={gameState.board}
-              winningLine={gameState.winningLine}
-              onSquareClick={handleSquareClick}
-              disabled={gameState.currentPlayer === "O" || gameState.isGameOver}
-            />
-
             {gameState.isGameOver && (
-              <div className="mt-8 text-center space-y-4">
-                <div className="text-xl">
-                  {gameState.winner
-                    ? `Winner: ${gameState.winner}`
-                    : "It's a draw!"}
+              <div className="mt-8 text-center space-y-4 animate-fade-in">
+                <div className="text-xl font-semibold">
+                  {gameState.winner === "X" && (
+                    <span className="text-green-400">You Won! 🎉</span>
+                  )}
+                  {gameState.winner === "O" && (
+                    <span className="text-red-400">You Lost! 😢</span>
+                  )}
+                  {!gameState.winner && (
+                    <span className="text-yellow-400">It's a Draw! 🤝</span>
+                  )}
                 </div>
-                <Button onClick={resetGame}>Play Again</Button>
+                <Button
+                  onClick={resetGame}
+                  className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2"
+                >
+                  Play Again
+                </Button>
               </div>
             )}
           </div>
         </div>
 
         {/* Achievements Section */}
-        <div className="mt-8">
-          <h2 className="text-2xl font-bold mb-4">Achievements</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="mt-12">
+          <h2 className="text-2xl font-bold mb-6 text-white">Achievements</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {ACHIEVEMENTS.map((achievement) => (
               <AchievementCard
                 key={achievement.id}
@@ -123,10 +168,11 @@ export default function GamePage() {
 
         {/* New Achievement Popup */}
         {newAchievements.length > 0 && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black/50">
-            <Card className="p-8 max-w-md w-full">
-              <h2 className="text-2xl font-bold mb-4">
+          <div className="fixed inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm animate-fade-in z-50">
+            <Card className="p-8 max-w-md w-full bg-slate-800/90 border-none">
+              <h2 className="text-2xl font-bold mb-4 text-white">
                 New Achievement{newAchievements.length > 1 ? "s" : ""} Unlocked!
+                🏆
               </h2>
               <div className="space-y-4">
                 {newAchievements.map((achievement) => (
@@ -137,7 +183,10 @@ export default function GamePage() {
                   />
                 ))}
               </div>
-              <Button className="mt-4 w-full" onClick={clearNewAchievements}>
+              <Button
+                className="mt-6 w-full bg-green-500 hover:bg-green-600 text-white"
+                onClick={clearNewAchievements}
+              >
                 Continue
               </Button>
             </Card>
