@@ -54,9 +54,9 @@ export default function GamePage() {
     <div className="min-h-screen p-8">
       <div className="max-w-4xl mx-auto">
         <div className="flex justify-between items-start mb-8">
-          <div className="w-1/3">
+          <div className="w-1/3 text-black">
             <Card className="p-4">
-              <h2 className="text-xl font-bold mb-4">Statistics</h2>
+              <h2 className="text-xl  font-bold mb-4">Statistics</h2>
               <div className="space-y-2">
                 <div>Total Games: {stats.totalGames}</div>
                 <div>Wins: {stats.wins}</div>
@@ -73,7 +73,7 @@ export default function GamePage() {
               <h1 className="text-4xl font-bold mb-4">Tic Tac Toe</h1>
 
               <Select
-                className="w-48 mx-auto mb-4"
+                className="w-48 mx-auto mb-4 text-black text-center"
                 value={gameState.difficulty}
                 onChange={handleDifficultyChange}
                 options={difficultyOptions}
@@ -87,6 +87,7 @@ export default function GamePage() {
             </div>
 
             <Board
+              player={gameState.currentPlayer}
               board={gameState.board}
               winningLine={gameState.winningLine}
               onSquareClick={handleSquareClick}

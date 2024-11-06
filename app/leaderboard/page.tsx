@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth/auth'
 import { cn } from '@/lib/utility/utils'
 
-// Mock data - in real app, fetch from database
+// Mock data 
 const MOCK_LEADERBOARD = [
   { userId: '1', username: 'Player 1', score: 100, wins: 10, achievements: 5 },
   { userId: '2', username: 'Player 2', score: 80, wins: 8, achievements: 4 },

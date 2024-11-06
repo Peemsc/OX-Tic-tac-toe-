@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utility/utils"
+import { cn } from '@/lib/utility/utils'
 import { ButtonHTMLAttributes, forwardRef } from "react"
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
