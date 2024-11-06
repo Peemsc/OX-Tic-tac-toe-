@@ -14,7 +14,7 @@ const handler = NextAuth({
   },
   callbacks: {
     async redirect({ url, baseUrl }) {
-      // ตรงนี้สำคัญ: ให้ redirect ไปที่หน้าเกมหลังจาก login สำเร็จ
+      
       return url.startsWith(baseUrl) ? url : "/game";
     },
     async session({ session, token }) {
