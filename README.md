@@ -1,25 +1,51 @@
-# Tic Tac Toe Web Application
+# 🎮 Tic Tac Toe Web Application
 
-เกม Tic Tac Toe ที่มีระบบ Authentication และระบบคะแนน
+<div align="center">
 
-## Features
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-blue?style=for-the-badge&logo=typescript)
+![TailwindCSS](https://img.shields.io/badge/Tailwind-CSS-38B2AC?style=for-the-badge&logo=tailwind-css)
+![Zustand](https://img.shields.io/badge/Zustand-brown?style=for-the-badge&logo=npm)
 
-- OAuth 2.0 Authentication ด้วย Google
-- เกม Tic Tac Toe แบบ Player vs Bot
-- ระบบคะแนน
-  - ชนะ: +1 คะแนน
-  - แพ้: -1 คะแนน
-  - ชนะ 3 ครั้งติดต่อกัน: +1 คะแนนโบนัส
-- ระดับความยาก (Easy, Medium, Hard)
-- ระบบ Achievement
+เกม Tic Tac Toe ที่มีระบบ Authentication และระบบคะแนน พัฒนาด้วย Next.js และ Next-auth
+
+[Live Demo](#) · [Report Bug](#) · [Request Feature](#)
+
+</div>
+
+---
+
+## ✨ Features
+
+### 🔐 Authentication
+- OAuth 2.0 Authentication ผ่าน Google
+- ระบบจัดการ Session
+
+### 🎮 Gameplay
+- ระบบเกม Player vs Bot
+- 3 ระดับความยาก:
+  - 🟢 Easy
+  - 🟡 Medium
+  - 🔴 Hard
+
+### 📊 ระบบคะแนน
+- ชนะ: +1 คะแนน
+- แพ้: -1 คะแนน
+- โบนัส: ชนะ 3 ครั้งติด +1 คะแนน
+
+### 🏆 ระบบ Achievement & สถิติ
 - บันทึกสถิติการเล่น
+- Achievements หลากหลายรูปแบบ
+- แสดงผลความสำเร็จแบบ Real-time
 
-## การติดตั้ง
+---
+
+## 🚀 การติดตั้ง
 
 1. Clone repository:
 ```bash
-git clone [repository-url]
-cd [project-name]
+git clone https://github.com/Peemsc/OX-Web.git
+cd OX-Web
 ```
 
 2. ติดตั้ง dependencies:
@@ -27,7 +53,7 @@ cd [project-name]
 pnpm install
 ```
 
-3. สร้างไฟล์ `.env` และกำหนดค่า:
+3. ตั้งค่าไฟล์ `.env`:
 ```env
 NEXTAUTH_SECRET=your-secret
 NEXTAUTH_URL=http://localhost:3000
@@ -40,15 +66,18 @@ GOOGLE_CLIENT_SECRET=your-client-secret
 pnpm dev
 ```
 
-## Tech Stack
+---
 
-- Next.js 14
-- NextAuth.js
-- Zustand
-- Tailwind CSS
-- TypeScript
+## 🛠️ Tech Stack
 
-## Dependencies
+### Core
+- ⚡ Next.js 14
+- 🔒 NextAuth.js
+- 📦 Zustand
+- 🎨 Tailwind CSS
+- 📝 TypeScript
+
+### Development Tools
 ```json
 {
   "dependencies": {
@@ -71,11 +100,16 @@ pnpm dev
 }
 ```
 
-## โครงสร้างโปรเจค
+---
+
+## 📁 โครงสร้างโปรเจค
 
 ```
 📦 ox
  ┣ 📂 app/                # Next.js app router
+ ┃ ┣ 📂 (auth)           # Authentication routes
+ ┃ ┣ 📂 game             # Game pages
+ ┃ ┗ 📂 api              # API routes
  ┣ 📂 components/         # React components
  ┃ ┣ 📂 auth/            # Authentication components
  ┃ ┣ 📂 game/            # Game components
@@ -87,14 +121,26 @@ pnpm dev
  ┗ 📂 public/            # Static files
 ```
 
-## การใช้งาน
+---
 
-1. เข้าสู่ระบบด้วย Google Account
-2. เลือกระดับความยาก
-3. เริ่มเล่นเกมโดยคลิกที่ช่องที่ต้องการ
-4. ดูคะแนนและ Achievement ที่ได้รับ
+## 📝 การใช้งาน
 
-## หมายเหตุ
-- ใช้ Node.js version 18 ขึ้นไป
+1. 🔐 เข้าสู่ระบบด้วย Google Account
+2. 🎯 เลือกระดับความยาก
+3. 🎮 เริ่มเล่นเกมโดยคลิกที่ช่องที่ต้องการ
+4. 🏆 ดูคะแนนและ Achievement ที่ได้รับ
+
+---
+
+## ⚠️ ข้อกำหนดระบบ
+- Node.js version 18 ขึ้นไป
 - PNPM version 8 ขึ้นไป
-- Chromium-based browsers is better
+- แนะนำ Chromium-based browsers สำหรับประสบการณ์การใช้งานที่ดีที่สุด
+
+---
+
+<div align="center">
+
+### Made with ❤️ by [SAHACHAT CHILLANONDA](https://github.com/Peemsc)
+
+</div>
