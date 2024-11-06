@@ -71,7 +71,7 @@ pnpm dev
 ## 🛠️ Tech Stack
 
 ### Core
-- ⚡ Next.js 14
+- ⚡ Next.js 15
 - 🔒 NextAuth.js
 - 📦 Zustand
 - 🎨 Tailwind CSS
