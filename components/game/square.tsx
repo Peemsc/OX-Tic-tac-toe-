@@ -1,5 +1,4 @@
 import { Player } from "@/lib/utility/types";
-import { cn } from "@/lib/utility/utils";
 
 interface SquareProps {
   value: Player;

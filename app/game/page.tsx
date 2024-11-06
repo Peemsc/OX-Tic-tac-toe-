@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect } from "react";
 import { Board } from "@/components/game/board";
-import { Score } from "@/components/game/score";
 import { AchievementCard } from "@/components/game/achievement";
 import { Button } from "@/components/ui/button";
 import { Select } from "@/components/ui/select";
@@ -172,7 +171,7 @@ export default function GamePage() {
                         </span>
                       )}
                       {!gameState.winner && (
-                        <span className="text-yellow-400">🤝 It's a Draw!</span>
+                        <span className="text-yellow-400">🤝 It&apos;s a Draw!</span>
                       )}
                     </div>
                     <Button
